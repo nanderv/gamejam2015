@@ -18,12 +18,6 @@ m = Map.load_json(fd)
 m.set_viewport(0, 0, window.width, window.height)
 
 # perform some queries to the map data!
-print (m.objectgroups.keys())
-# list all the objects
-print("listing all the objects:")
-for obj in m.objectgroups["object"]:
-    print(obj)
-
 
 # get the object named "Door1"
 keyboardhandler = pyglet.window.key.KeyStateHandler()
