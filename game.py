@@ -2,10 +2,12 @@
 
 import pyglet
 import sys
-
+import os
+os.sys.path.insert(0, '../pyglet-tiled-json-map')
 
 from json_map import Map
 import pprint
+
 window = pyglet.window.Window(fullscreen=True)
 window.set_vsync(0)
 # load the map
