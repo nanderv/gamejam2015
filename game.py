@@ -3,10 +3,10 @@
 import pyglet
 import sys
 
-sys.path.insert(0, '../pyglet-tiled-json-map')
+
 from json_map import Map
 import pprint
-window = pyglet.window.Window()
+window = pyglet.window.Window(fullscreen=True)
 window.set_vsync(0)
 # load the map
 fd = pyglet.resource.file("test.json", 'rt')
@@ -35,22 +35,21 @@ def update(dt):
             d_x = 0
             d_y = 0
             if keyboardhandler[pyglet.window.key.D]:
-                d_x += 10
+                d_x += 1
             if keyboardhandler[pyglet.window.key.A]:
-                d_x += -10
+                d_x += -1
             if keyboardhandler[pyglet.window.key.S]:
-                d_y += 10
+                d_y += 1
             if keyboardhandler[pyglet.window.key.W]:
-                d_y += -10
-            m.objectgroups[key].move(object,d_x,d_y)
+                d_y += -1
+            m.objectgroups[key].move(object, d_x, d_y)
             object["rotation"] += 1
     window.clear()
     m.invalidate()
-    m.move_focus(1,0)
+    m.move_focus(1, 0)
     m.draw()
-pp = pprint.PrettyPrinter()
-pp.pprint(m.tilelayers["collision"].sprites.keys())
+
 print(m.tilelayers["collision"][10, 10])
-pyglet.clock.schedule_interval(update,1.0/60.0)
+pyglet.clock.schedule_interval(update, 1.0/60.0)
 pyglet.clock.set_fps_limit(60)
 pyglet.app.run()
